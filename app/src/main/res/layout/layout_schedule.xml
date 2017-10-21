@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:layout_alignWithParentIfMissing="true"
+  android:orientation="vertical">
+
+  <cn.jwg.mycalendarmonthweek.calendar.WeekBarView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/week_bar_height"
+    android:background="@color/colorWrite"
+    app:week_text_size="10" />
+
+  <cn.jwg.mycalendarmonthweek.calendar.schedule.ScheduleLayout
+    android:id="@+id/sl_schedule_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:auto_change_month_row="true"
+    app:default_view="month">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+          android:id="@+id/rlMonthCalendar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <cn.jwg.mycalendarmonthweek.calendar.month.MonthCalendarView
+            android:id="@+id/mcv_calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/month_calendar_height"
+            android:background="@color/calendar_bg_color"
+            android:overScrollMode="never"
+            app:month_day_text_size="@integer/calendar_text_size"
+            app:month_show_task_hint="true" />
+        </RelativeLayout>
+
+        <cn.jwg.mycalendarmonthweek.calendar.week.WeekCalendarView
+          android:id="@+id/wcv_calendar_view"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/week_calendar_height"
+          android:background="@color/calendar_bg_color"
+          android:overScrollMode="never"
+          android:visibility="gone"
+          app:week_day_text_size="@integer/calendar_text_size"
+          app:week_show_task_hint="true" />
+
+      </RelativeLayout>
+
+      <RelativeLayout
+        android:id="@+id/rlScheduleList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+
+        <include
+          android:id="@+id/ll_medic_history_header"
+          layout="@layout/item_medic_history_header" />
+
+        <cn.jwg.mycalendarmonthweek.common.CalendarListView
+          android:id="@+id/clv_data_list"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:cacheColorHint="@color/transparent"
+          android:layout_below="@+id/ll_medic_history_header"
+          android:divider="@color/transparent"
+          android:dividerHeight="0dp"
+          android:fastScrollEnabled="false"
+          android:listSelector="@android:color/transparent"
+          android:overScrollMode="never"
+          android:scrollbars="none"  />
+
+        <RelativeLayout
+          android:id="@+id/rlNoTask"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@+id/ll_medic_history_header"
+          android:background="@color/colorBackground"
+          android:visibility="gone">
+
+          <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true" />
+
+          <TextView
+            android:id="@+id/tv_select_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+      </RelativeLayout>
+
+    </LinearLayout>
+
+  </cn.jwg.mycalendarmonthweek.calendar.schedule.ScheduleLayout>
+
+</LinearLayout>
